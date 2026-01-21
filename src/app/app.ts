@@ -8,15 +8,21 @@ import { Loading } from './components/loading/loading';
 import { Navbar } from './components/navbar/navbar';
 import { Searchbar } from './components/searchbar/searchbar';
 import { Title } from './components/title/title';
+import { Card } from './components/card/card';
+import { Middle } from './components/middle/middle';
+import { Hero } from './components/hero/hero';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,
     Alert,
+    Card,
     Dropdown,
     Footer,
+    Hero,
     Link,
     Loading,
+    Middle,
     Navbar,
     Searchbar,
     Title
