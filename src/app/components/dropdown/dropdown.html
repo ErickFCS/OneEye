@@ -1,0 +1,8 @@
+@for (match of matches(); track match.id) {
+  <button class="flex row w-full justify-between items-center p-1">
+    <p>{{ match.name }}</p>
+    <span class="size-9">
+      <img [src]="match.imageURL" />
+    </span>
+  </button>
+}
