@@ -1,1 +1,9 @@
-<p>middle works!</p>
+<section class="flex flex-col md:flex-row items-strech">
+  <div class="md:w-1/2 flex flex-col mt-5 ml-5">
+    <h2 class="text-5xl">{{title()}}</h2>
+    <p class="text-md">{{description()}}</p>
+  </div>
+  <figure class="md:w-1/2">
+    <img [src]="imageURL()" />
+  </figure>
+</section>

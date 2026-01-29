@@ -1,1 +1,44 @@
-<p>card works!</p>
+<div class="card bg-base-100 w-96 shadow-sm">
+  <figure>
+    <img [src]="imageURL()" alt="Shoes" />
+  </figure>
+  <div class="card-body grid grid-cols-2 grid-rows-2 items-center">
+    <h3 class="card-title">{{ title() }}</h3>
+    <div class="rating rating-xs justify-self-end">
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="1 star"
+        [aria-current]="stars() === 1"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="2 star"
+        [aria-current]="stars() === 2"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="3 star"
+        [aria-current]="stars() === 3"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="4 star"
+        [aria-current]="stars() === 4"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="5 star"
+        [aria-current]="stars() === 5"
+      ></div>
+    </div>
+    <div class="flex row col-span-2">
+      <p [class.line-clamp-1]="linesClamped()">
+        {{ description() }}
+        <span (click)="toggleMore()" class="underline block text-right">show less</span>
+      </p>
+      @if (linesClamped()) {
+        <button (click)="toggleMore()" class="underline shrink-0">show more</button>
+      }
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-middle',
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './middle.css',
 })
 export class Middle {
-
+  title = signal('Movie title');
+  description = signal('movie description very large');
+  imageURL = signal('/back.png');
 }
