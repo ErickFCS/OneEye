@@ -28,11 +28,11 @@ const moviedb = new MovieDb(tmdb_api_key);
  */
 app.get('/api/config', async (_req, res) => {
   try {
-    const rawData = await moviedb.configuration()
+    const rawData = await moviedb.configuration();
     const data = {
-      baseUrl : rawData.images.secure_base_url,
+      baseUrl: rawData.images.secure_base_url,
       imageSizes: rawData.images.poster_sizes,
-    }
+    };
     res.json(data);
   } catch {
     res.status(501).send('Server error');
@@ -45,7 +45,9 @@ app.get('/api/query', async (req, res) => {
   const query = String(req.query['query']) || '';
   const page = Number(req.query['page']) || 1;
   try {
-    const rawData = await moviedb.searchMovie({ query, page });
+    const rawData = query
+      ? await moviedb.searchMovie({ query, page })
+      : await moviedb.discoverMovie({ page });
     const data = rawData.results
       ?.map((e) => ({
         title: e.title,
