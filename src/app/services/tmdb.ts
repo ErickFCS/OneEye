@@ -7,9 +7,9 @@ import { Movie } from '../types/movie';
   providedIn: 'root',
 })
 export class Tmdb {
-  private baseURL = signal('');
-  private imageSizes = signal<string[]>([]);
   private http = inject(HttpClient);
+  baseURL = signal('');
+  imageSizes = signal<string[]>([]);
   movies = signal<Movie[]>([]);
 
   loadConfig() {
@@ -19,16 +19,16 @@ export class Tmdb {
     });
   }
 
-  search(query: string) {
+  search(query?: string, page?: number) {
     if (this.baseURL() === '') this.loadConfig();
-    this.http.get<Movie[]>(`/api/query?query=${query}`).subscribe((movies) => {
+    this.http.get<Movie[]>(`/api/query?query=${query}&page=${page}`).subscribe((movies) => {
       this.movies.set(movies);
     });
   }
 
   getImageURL(size: string, imageURLEnd: string) {
-    if(this.movies().length === 0) return ''
-    if(!this.imageSizes().includes(size)) throw {reason: "that is not a valid image size"}
-    return `${this.baseURL}${size}${imageURLEnd}`
+    if (this.movies().length === 0) return '';
+    if (!this.imageSizes().includes(size)) throw { reason: 'that is not a valid image size' };
+    return `${this.baseURL()}${size}${imageURLEnd}`;
   }
 }

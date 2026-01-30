@@ -30,7 +30,7 @@ app.get('/api/config', async (_req, res) => {
   try {
     const rawData = await moviedb.configuration();
     const data = {
-      baseUrl: rawData.images.secure_base_url,
+      baseURL: rawData.images.secure_base_url,
       imageSizes: rawData.images.poster_sizes,
     };
     res.json(data);
