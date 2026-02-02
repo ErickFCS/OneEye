@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Config } from '../types/config';
 import { Movie } from '../types/movie';
+import { of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +14,22 @@ export class Tmdb {
   movies = signal<Movie[]>([]);
 
   loadConfig() {
-    this.http.get<Config>('/api/config').subscribe((config) => {
-      this.baseURL.set(config.baseURL);
-      this.imageSizes.set(config.imageSizes);
-    });
+    return this.http.get<Config>('/api/config').pipe(
+      tap((config) => {
+        this.baseURL.set(config.baseURL);
+        this.imageSizes.set(config.imageSizes);
+      }),
+    );
   }
 
   search(query?: string, page?: number) {
-    if (this.baseURL() === '') this.loadConfig();
-    this.http.get<Movie[]>(`/api/query?query=${query}&page=${page}`).subscribe((movies) => {
-      this.movies.set(movies);
-    });
+    const config = this.baseURL() === '' ? this.loadConfig() : of();
+    return config.pipe(
+      switchMap(() => this.http.get<Movie[]>(`/api/query?query=${query}&page=${page}`)),
+      tap((movies) => {
+        this.movies.set(movies);
+      }),
+    );
   }
 
   getImageURL(size: string, imageURLEnd: string) {

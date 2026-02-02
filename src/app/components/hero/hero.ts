@@ -1,7 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Tmdb } from '../../services/tmdb';
-import { combineLatest, filter, take } from 'rxjs';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-hero',
@@ -14,27 +13,18 @@ export class Hero {
 
   imageURL = signal('');
   backgroundImageStyle = computed(() => `url(${this.imageURL()})`);
-  private dataReady$ = combineLatest([
-    toObservable(this.tmdbService.movies),
-    toObservable(this.tmdbService.imageSizes),
-    toObservable(this.tmdbService.baseURL),
-  ]).pipe(
-    filter(
-      ([movies, imageSizes, baseURL]) =>
-        movies.length > 0 && imageSizes.length > 0 && baseURL !== '',
-    ),
-    take(1),
-  );
 
   ngOnInit() {
-    this.tmdbService.search('', Math.floor(Math.random() * 20) + 1);
-    this.dataReady$.subscribe(([movies, imageSizes]) => {
-      this.imageURL.set(
-        this.tmdbService.getImageURL(
-          imageSizes.at(-1) || '',
-          movies.at(Math.floor(Math.random() * movies.length))?.imageURLEnd || '',
-        ),
-      );
-    });
+    this.tmdbService
+      .search('', Math.floor(Math.random() * 20) + 1)
+      .pipe(take(1))
+      .subscribe((movies) => {
+        let targetSize = this.tmdbService.imageSizes().at(-1);
+        let targetMovie = movies.at(Math.floor(Math.random() * movies.length))?.imageURLEnd;
+        if (!targetSize || !targetMovie) return;
+        let targetMovieImageURL = this.tmdbService.getImageURL(targetSize, targetMovie);
+        if (!targetMovieImageURL) return;
+        this.imageURL.set(targetMovieImageURL);
+      });
   }
 }
