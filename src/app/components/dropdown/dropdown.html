@@ -1,5 +1,8 @@
+@if (matches().length > 0) {
+  <div class="absolute top-0 h-[20px] w-full -translate-y-full bg-[var(--color-base-100)] z-[-1]"></div>
+}
 @for (match of matches(); track match.id) {
-  <button class="flex row w-full justify-between items-center p-1">
+  <button class="flex row w-full justify-between items-center p-1 bg-[var(--color-base-100)]">
     <p>{{ match.name }}</p>
     <span class="size-9">
       <img [src]="match.imageURL" />

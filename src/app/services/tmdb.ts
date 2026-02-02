@@ -8,7 +8,7 @@ import { Movie } from '../types/movie';
 })
 export class Tmdb {
   private http = inject(HttpClient);
-  baseURL = signal('');
+  baseURL = signal<string>('');
   imageSizes = signal<string[]>([]);
   movies = signal<Movie[]>([]);
 
