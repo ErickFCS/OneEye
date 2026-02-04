@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { Movie } from '../../types/movie';
 
 @Component({
   selector: 'app-dropdown',
@@ -7,11 +8,10 @@ import { Component, signal } from '@angular/core';
   styleUrl: './dropdown.css',
 })
 export class Dropdown {
-  matches = signal([
-    {
-      id: 0,
-      name: 'Hello',
-      imageURL: '/avatar.png',
-    },
-  ]);
+  matches = input<Movie[]>([]);
+  itemSelected = output<Movie>();
+  onItemClick(movie: Movie) {
+    console.log("You clicked me")
+    this.itemSelected.emit(movie);
+  }
 }

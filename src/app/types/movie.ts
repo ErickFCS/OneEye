@@ -3,4 +3,6 @@ export interface Movie {
   description: string;
   rating: number;
   imageURLEnd: string;
+  imageURL?: string;
+  id?: number;
 }

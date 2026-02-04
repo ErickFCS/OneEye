@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Config } from '../types/config';
 import { Movie } from '../types/movie';
-import { of, switchMap, tap } from 'rxjs';
+import { Observable, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class Tmdb {
   }
 
   search(query?: string, page?: number) {
-    const config = this.baseURL() === '' ? this.loadConfig() : of();
+    const config: Observable<any> = this.baseURL() === '' ? this.loadConfig() : of(null);
     return config.pipe(
       switchMap(() => this.http.get<Movie[]>(`/api/query?query=${query}&page=${page}`)),
       tap((movies) => {
@@ -32,8 +32,8 @@ export class Tmdb {
     );
   }
 
-  getImageURL(size: string, imageURLEnd: string) {
-    if (this.movies().length === 0) return '';
+  getImageURL(size: string | undefined, imageURLEnd: string | undefined) {
+    if (!size || !imageURLEnd) return '';
     if (!this.imageSizes().includes(size)) throw { reason: 'that is not a valid image size' };
     return `${this.baseURL()}${size}${imageURLEnd}`;
   }

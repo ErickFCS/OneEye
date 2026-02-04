@@ -1,4 +1,4 @@
-<label class="input w-[15rem] sm:w-[35rem] rounded-full">
+<label class="input w-full rounded-full">
   <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       stroke-linejoin="round"
@@ -11,6 +11,6 @@
       <path d="m21 21-4.3-4.3"></path>
     </g>
   </svg>
-  <input type="search" class="grow" placeholder="Search" [value]="value()" />
+  <input [formControl]="searchControl" type="search" class="grow" placeholder="Search" />
 </label>
-<app-dropdown></app-dropdown>
+<app-dropdown [matches]="matches()" (itemSelected)="handleClick($event)"></app-dropdown>

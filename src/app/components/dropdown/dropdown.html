@@ -1,10 +1,15 @@
 @if (matches().length > 0) {
-  <div class="absolute top-0 h-[20px] w-full -translate-y-full bg-[var(--color-base-100)] z-[-1]"></div>
+  <div
+    class="absolute top-0 h-[20px] w-full -translate-y-full bg-[var(--color-base-100)] z-[-1]"
+  ></div>
 }
-@for (match of matches(); track match.id) {
-  <button class="flex row w-full justify-between items-center p-1 bg-[var(--color-base-100)]">
-    <p>{{ match.name }}</p>
-    <span class="size-9">
+@for (match of matches().slice(0, 5); track match.id) {
+  <button
+    class="flex row w-full justify-between items-center p-1 pl-3 pr-3 gap-2 bg-[var(--color-base-100)] cursor-pointer"
+    (click)="onItemClick(match)"
+  >
+    <p>{{ match.title }}</p>
+    <span class="size-9 overflow-hidden">
       <img [src]="match.imageURL" />
     </span>
   </button>
