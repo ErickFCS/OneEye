@@ -14,6 +14,7 @@ export class Middle {
 
   title = computed(() => this.targetMovie.targetMovie()?.title);
   description = computed(() => this.targetMovie.targetMovie()?.description);
+  stars = computed(() => this.targetMovie.targetMovie()?.rating || 0 / 2);
   imageURL = computed(() => {
     return this.tmdb.getImageURL(
       this.tmdb.imageSizes().at(-1),

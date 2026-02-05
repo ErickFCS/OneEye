@@ -45,7 +45,6 @@ export class Searchbar {
   }
 
   handleClick(movie: Movie) {
-    console.log("Hello searchbar updating the store")
     this.targetMovie.targetMovie.set(movie)
   }
 }

@@ -1,9 +1,48 @@
 <section class="flex flex-col md:flex-row items-strech">
-  <div class="md:w-1/2 flex flex-col mt-5 ml-5">
-    <h2 class="text-5xl">{{title()}}</h2>
-    <p class="text-md">{{description()}}</p>
+  <div class="md:w-1/2 flex flex-col justify-center items-center m-5">
+    <h2 class="text-5xl">{{ title() }}</h2>
+    <br />
+    <div class="rating rating-xl justify-self-end">
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="1 star"
+        [aria-current]="stars() >= 1"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="2 star"
+        [aria-current]="stars() >= 2"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="3 star"
+        [aria-current]="stars() >= 3"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="4 star"
+        [aria-current]="stars() >= 4"
+      ></div>
+      <div
+        class="mask mask-star-2 bg-orange-400"
+        aria-label="5 star"
+        [aria-current]="stars() >= 5"
+      ></div>
+    </div>
+    <br />
+    <p class="text-md">{{ description() }}</p>
   </div>
-  <figure class="md:w-1/2">
-    <img [src]="imageURL()" />
-  </figure>
+  <div class="hover-3d md:w-1/2 m-2">
+    <figure class="rounded-4xl">
+      <img [src]="imageURL()" />
+    </figure>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </section>

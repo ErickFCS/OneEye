@@ -11,7 +11,6 @@ export class Dropdown {
   matches = input<Movie[]>([]);
   itemSelected = output<Movie>();
   onItemClick(movie: Movie) {
-    console.log("You clicked me")
     this.itemSelected.emit(movie);
   }
 }
