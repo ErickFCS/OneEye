@@ -7,5 +7,5 @@ import { Component, signal } from '@angular/core';
   styleUrl: './notice.css',
 })
 export class Notice {
-  text = signal("@copyright 2025");
+  text = signal("@copyright 2025 - present");
 }

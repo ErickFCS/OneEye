@@ -1,4 +1,4 @@
-<section class="flex flex-col md:flex-row items-strech">
+<section class="flex flex-col md:flex-row md:h-dvh items-strech">
   <div class="md:w-1/2 flex flex-col justify-center items-center m-10">
     <h2 class="text-5xl">{{ title() }}</h2>
     <br />
@@ -32,9 +32,9 @@
     <br />
     <p class="text-md">{{ description() }}</p>
   </div>
-  <div class="hover-3d md:w-1/2 m-10">
+  <div class="sm:hover-3d m-10">
     <figure class="rounded-4xl">
-      <img [src]="imageURL()" />
+      <img [src]="imageURL()" class="rounded-4xl w-full md:w-none md:h-full" />
     </figure>
     <div></div>
     <div></div>

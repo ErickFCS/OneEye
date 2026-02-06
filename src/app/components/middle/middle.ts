@@ -10,15 +10,13 @@ import { Tmdb } from '../../services/tmdb';
 })
 export class Middle {
   private tmdb = inject(Tmdb);
-  private targetMovie = inject(TargetMovie);
+  private targetMovie = inject(TargetMovie).targetMovie;
 
-  title = computed(() => this.targetMovie.targetMovie()?.title);
-  description = computed(() => this.targetMovie.targetMovie()?.description);
-  stars = computed(() => this.targetMovie.targetMovie()?.rating || 0 / 2);
+  title = computed(() => this.targetMovie()?.title);
+  description = computed(() => this.targetMovie()?.description);
+  stars = computed(() => this.targetMovie()?.rating || 0 / 2);
   imageURL = computed(() => {
-    return this.tmdb.getImageURL(
-      this.tmdb.imageSizes().at(-1),
-      this.targetMovie.targetMovie()?.imageURLEnd,
-    );
+    return this.tmdb.getImageURL(this.tmdb.imageSizes().at(-1), this.targetMovie()?.imageURLEnd);
   });
+  loading = computed(() => false);
 }

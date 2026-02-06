@@ -16,7 +16,7 @@ import { ViewportScroller } from '@angular/common';
 export class Searchbar {
   private scroller = inject(ViewportScroller);
   private tmdb = inject(Tmdb);
-  private targetMovie = inject(TargetMovie);
+  private targetMovie = inject(TargetMovie).targetMovie;
   searchControl = new FormControl('');
   matches = signal<Movie[]>([]);
   isLoading = signal(false);
@@ -47,7 +47,7 @@ export class Searchbar {
   }
 
   handleClick(movie: Movie) {
-    this.targetMovie.targetMovie.set(movie);
+    this.targetMovie.set(movie);
     this.scroller.scrollToAnchor('middleSection');
   }
 }

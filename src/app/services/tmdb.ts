@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Config } from '../types/config';
 import { Movie } from '../types/movie';
-import { Observable, of, switchMap, tap } from 'rxjs';
+import { filter, Observable, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,6 +25,7 @@ export class Tmdb {
   search(query?: string, page?: number) {
     const config: Observable<any> = this.baseURL() === '' ? this.loadConfig() : of(null);
     return config.pipe(
+      filter(() => this.baseURL() !== '' && this.imageSizes().length > 0),
       switchMap(() => this.http.get<Movie[]>(`/api/query?query=${query}&page=${page}`)),
       tap((movies) => {
         this.movies.set(movies);
