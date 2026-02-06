@@ -1,9 +1,4 @@
-import { Component, signal } from '@angular/core';
-
-interface entry {
-  value: string;
-  id: number;
-}
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -11,15 +6,4 @@ interface entry {
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact {
-  entries = signal<entry[]>([
-    {
-      id: 1,
-      value: "emaildirecction@emailprovider.com"
-    },
-    {
-      id: 2,
-      value: "ErickFCS"
-    },
-  ]);
-}
+export class Contact {}
