@@ -5,6 +5,7 @@ import { Movie } from '../../types/movie';
 import { Tmdb } from '../../services/tmdb';
 import { debounceTime, distinctUntilChanged, of, switchMap, tap } from 'rxjs';
 import { TargetMovie } from '../../services/target-movie';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-searchbar',
@@ -13,6 +14,7 @@ import { TargetMovie } from '../../services/target-movie';
   styleUrl: './searchbar.css',
 })
 export class Searchbar {
+  private scroller = inject(ViewportScroller);
   private tmdb = inject(Tmdb);
   private targetMovie = inject(TargetMovie);
   searchControl = new FormControl('');
@@ -45,6 +47,7 @@ export class Searchbar {
   }
 
   handleClick(movie: Movie) {
-    this.targetMovie.targetMovie.set(movie)
+    this.targetMovie.targetMovie.set(movie);
+    this.scroller.scrollToAnchor('middleSection');
   }
 }
