@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-title',
@@ -6,6 +6,4 @@ import { Component, signal } from '@angular/core';
   templateUrl: './title.html',
   styleUrl: './title.css',
 })
-export class Title {
-  compressed = signal(false);
-}
+export class Title {}
