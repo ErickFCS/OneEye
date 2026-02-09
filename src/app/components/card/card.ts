@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { Rating } from '../rating/rating';
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  imports: [Rating],
   templateUrl: './card.html',
   styleUrl: './card.css',
 })

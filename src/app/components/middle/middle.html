@@ -2,33 +2,7 @@
   <div class="md:w-1/2 flex flex-col justify-center items-center m-10">
     <h2 class="text-5xl">{{ title() }}</h2>
     <br />
-    <div class="rating rating-xl justify-self-end">
-      <div
-        class="mask mask-star-2 bg-orange-400"
-        aria-label="1 star"
-        [aria-current]="stars() >= 1"
-      ></div>
-      <div
-        class="mask mask-star-2 bg-orange-400"
-        aria-label="2 star"
-        [aria-current]="stars() >= 2"
-      ></div>
-      <div
-        class="mask mask-star-2 bg-orange-400"
-        aria-label="3 star"
-        [aria-current]="stars() >= 3"
-      ></div>
-      <div
-        class="mask mask-star-2 bg-orange-400"
-        aria-label="4 star"
-        [aria-current]="stars() >= 4"
-      ></div>
-      <div
-        class="mask mask-star-2 bg-orange-400"
-        aria-label="5 star"
-        [aria-current]="stars() >= 5"
-      ></div>
-    </div>
+    <app-rating [stars]="stars()"></app-rating>
     <br />
     <p class="text-md">{{ description() }}</p>
   </div>
