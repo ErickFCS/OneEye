@@ -9,7 +9,6 @@ import { join } from 'node:path';
 
 import 'dotenv/config';
 import { MovieDb } from 'moviedb-promise';
-import { map } from 'rxjs';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -18,8 +17,7 @@ const angularApp = new AngularNodeAppEngine();
 
 const tmdb_api_key = process.env?.['TMDB_API_KEY'] || '';
 if (!tmdb_api_key) {
-  console.log('Empty API key');
-  process.exit(1);
+  throw new Error('No API key');
 }
 const moviedb = new MovieDb(tmdb_api_key);
 
