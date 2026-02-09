@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "movieSearcher": {
+    "oneEye": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "movieSearcher:build:production"
+              "buildTarget": "oneEye:build:production"
             },
             "development": {
-              "buildTarget": "movieSearcher:build:development"
+              "buildTarget": "oneEye:build:development"
             }
           },
           "defaultConfiguration": "development"

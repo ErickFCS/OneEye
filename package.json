@@ -1,5 +1,5 @@
 {
-  "name": "movie-searcher",
+  "name": "one-eye",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:movieSearcher": "node dist/movieSearcher/server/server.mjs"
+    "serve:ssr:oneEye": "node dist/oneEye/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
