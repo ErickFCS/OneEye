@@ -35,7 +35,7 @@ export class Tmdb {
 
   getImageURL(size: string | undefined, imageURLEnd: string | undefined) {
     if (!size || !imageURLEnd) return '';
-    if (!this.imageSizes().includes(size)) throw { reason: 'that is not a valid image size' };
+    if (!this.imageSizes().includes(size)) throw new Error('that is not a valid image size');
     return `${this.baseURL()}${size}${imageURLEnd}`;
   }
 }

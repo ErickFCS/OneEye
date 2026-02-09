@@ -8,6 +8,4 @@ import { Notice } from '../notice/notice';
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
-export class Footer {
-
-}
+export class Footer {}
