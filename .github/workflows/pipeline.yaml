@@ -28,11 +28,6 @@ jobs:
       - name: Running Tests
         run: pnpm test
 
-      - name: Building Frontend
-        env:
-          TMDB_API_KEY: "Fake Api Key"
-        run: pnpm build
-
       - name: Deploy to render
         if: ${{ github.event_name == 'push' }}
         run: curl https://api.render.com/deploy/srv-${{secrets.RENDER_SERVICE_ID}}?key=${{secrets.RENDER_API_KEY}}
