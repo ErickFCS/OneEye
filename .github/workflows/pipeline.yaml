@@ -29,6 +29,8 @@ jobs:
         run: pnpm test
 
       - name: Building Frontend
+        env:
+          TMDB_API_KEY: "Fake Api Key"
         run: pnpm build
 
       - name: Deploy to render
