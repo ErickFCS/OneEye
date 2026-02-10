@@ -20,7 +20,7 @@ The goal of OneEye is to provide a seamless way to discover movie content. By le
 
 ## 🔴 Live Demo
 
-[View Live Preview](https://your-live-link-here.com) _(Coming Soon)_
+[View Live Preview](https://oneeye.onrender.com) _(https://oneeye.onrender.com)_
 
 ## ⚙️ Prerequisites
 
