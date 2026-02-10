@@ -1,5 +1,9 @@
 # OneEye
 
+<p align="center">
+  <img src="public/overview.png" alt="Awesome Image" width="600">
+</p>
+
 **OneEye** is a modern movie search application built with performance and user experience in mind. It allows users to instantly search for movies by name, view detailed descriptions, and check ratings to decide what to watch next.
 
 ## 🚀 Why?
